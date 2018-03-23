@@ -1,0 +1,45 @@
+{%extends "bootstrap/base.html"%}
+{% block head%}
+{{super()}}
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <meta name="description" content="real estate">
+    <meta name="keyword" content="books">
+    <meta name="author" content="kiamakelvin">
+   <!--  <meta http-equiv="refresh" content="100"> -->
+    <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>B.I.G Resource Center</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename ='css/animate.cs')}}">
+    <!--favicon link-->
+    <link rel="shortcut icon" type="x/image-icon" href="{{url_for('static', filename ='images/favicon.ico')}}">
+ 
+{%endblock%}
+{% block content%}
+<div class="container">
+	{% for i in book%}
+	<div class="col-md-3">
+		<img class="img-responsive" src="static/images/{{i[0]}}">
+		
+        <div class="overlay">
+        	{%for x in range(l)%}
+            <ul class="bookdetails text-center">
+              <li class="bookdetailsinfo">{{i[x][1]}}</li>
+              <li class="bookdetailsinfo">{{i[x][2]}}</li>
+              <li class="bookdetailsinfo">{{i[x][3]}}</li>
+            </ul>
+            <span></span>
+            <span class="btn btn-default pull-right cart glyphicon glyphicon-shopping-cart"> Borrow</span>
+            <span class="btn btn-default pull-left cart glyphicon glyphicon-glyphicon glyphicon-thumbs-up"></span>
+            <span class="btn btn-default pull-left cart glyphicon glyphicon-thumbs-down"></span>
+            {%endfor%}
+          </div>
+		
+	</div>
+		{%endfor%}
+	
+</div>
+
+{%endblock%}

@@ -7,15 +7,13 @@ link=links()
 posters=poster()
 @app.route("/index")
 def login():
-   return render_template("index.html",posters=posters, link=link,len=len)
+   return render_template("index.html",posters=posters, link=link,)
 
 @app.route("/admindashboard")
 def admindashboard():
    return render_template("admindashboard.html")
 
-@app.route("/index")
-def dashboard():
-   return render_template("dashboard.html")
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     app.run(debug=True)
