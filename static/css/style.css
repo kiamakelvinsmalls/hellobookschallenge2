@@ -1,0 +1,170 @@
+*{
+	margin: 0 auto;
+}
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand{
+	margin-bottom: 5px;
+	margin-top: -8px;
+}
+.books{
+	display: grid;
+	grid-template-columns:1fr 1fr 1fr 1fr;
+	grid-column-gap:15px;
+	grid-row-gap:15px;
+}
+.modal{
+	background-color:rgba(0,0,0,0.8);
+	z-index: 8;
+	top:0;
+	bottom:0;
+	left: 0;
+	right: 0;
+
+
+}
+.formcontainer{
+	max-width: 300px;
+	color: #000;
+}
+.formcontainer input{
+	margin-bottom: 10px;
+}
+/*login and register module styling*/
+#login,#register,#adminLogin,#adminSignup,#clientView{
+
+background-color: rgba(0,0,0,0.8);
+max-width: 100%;
+max-height: 100%;
+
+}
+.clientDetailsContainer{
+    max-width: 500px;
+    color: #000;
+    float: right;
+    top: 45px;
+    position: absolute;
+    right: 50px;
+    z-index: 10;
+    display: none;
+   
+}
+.clientDetailsContainer::after{
+	content: "";
+    position: absolute;
+    top: -6%;
+    right: 10%;
+    margin-left: -5px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent
+
+}
+.clientInfo li{
+list-style: none;
+}
+.clear{
+	display: grid;
+	grid-template-columns:30% 70%; 
+}
+#clientDetails .modal-footer{
+	background:#f5f5f5;
+	padding:8px;
+}
+.clientInfo{
+	padding-left: 0px;
+}
+#clientDetails .modal-body{
+	padding: 10px;
+}
+
+.me{
+	max-width: 300px;
+	margin-right: 20px;
+
+}
+section .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9{
+	padding: 10px;
+}
+.you{
+	max-width: 300px;
+}	
+#clientView .modal-footer{
+	padding: 0 15px;
+	border-top: none;
+
+}
+#clientView .modal-header{
+	padding: 0 15px
+}
+
+.aside-headings{
+	
+	background-color:rgba(0,0,0,0.5); 
+	padding: 5px;
+	color: #fff;
+	box-shadow: 5px 5px 10px black;
+	border-radius:5px;
+  
+
+}
+.aside-headings:hover{
+	color: black;
+}
+.aside-quick-links .aside-link{
+	display: block;
+	border-bottom: dashed 0.5px grey;
+	margin-left:-25px;
+	max-width: 90%;
+	border-radius: 5px;
+	font-size: 15px;
+	text-transform: capitalize;
+
+}
+.aside-link{
+	padding-top: 10px;
+}
+.aside-link:hover{
+	box-shadow: inset 1px 1px 10px black;
+	background-color: rgba(0,0,0,0.7);
+	padding: 5px;
+	border-radius: 5px;
+}
+.aside-link:hover a{
+	text-decoration: none; 
+	color: rgba(144,194,33,1.0);
+
+}
+img{
+	border-radius: 10px;
+}
+.cart{
+	margin-top: 10px;
+
+}
+.overlay {
+  position: absolute;
+  bottom: -6.2px;
+  left: -1px;
+  right: 0;
+  background-color:rgba(256,256,256,0.8); 
+  overflow: hidden;
+  width: 101%;
+  height: 104.2%;
+  transform:scale(0);
+  -webkit-transform:scale(0);
+  transition: .3s ease;
+  border-radius: 12px;
+}
+.col-md-3:hover .overlay {
+  transform: scale(0.9)
+}
+
+.bookdetails .bookdetailsinfo{
+	display: block;
+	border-bottom: dashed 0.5px grey;
+	margin-left:-25px;
+	max-width: 90%;
+	border-radius: 5px;
+	font-size: 15px;
+	text-transform: capitalize;
+	margin-top: 20px;
+}
