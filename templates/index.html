@@ -1,0 +1,315 @@
+{%extends "bootstrap/base.html" %}
+{% block head%}
+{{super()}}
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <meta name="description" content="real estate">
+    <meta name="keyword" content="books">
+    <meta name="author" content="kiamakelvin">
+   <!--  <meta http-equiv="refresh" content="100"> -->
+    <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>B.I.G Resource Center</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename ='css/animate.cs')}}">
+    <!--favicon link-->
+    <link rel="shortcut icon" type="x/image-icon" href="{{url_for('static', filename ='images/favicon.ico')}}">
+ 
+{%endblock%}
+{%block content%}
+<body>
+    <nav class="navbar navbar-inverse">
+     <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span> 
+        </button>
+        <a class="navbar-brand text-center" href="#">B.I.G RESOURCE </br> CENTER </span></a> 
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span> <span  onclick="signup()";>Client signup</span></a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> <span onclick="login()";>Client login</span></a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span> <span onclick="adminSignup()";>Admin signup</span></a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> <span onclick="adminLogin()";>Admin login</span></a></li>
+        </ul>
+      </div>
+     </div>
+    </nav>
+<!-- client Modal  login-->
+    <div id="login" role="dialog" class="modal">
+      <div class="formcontainer">
+    <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close"  onclick="shut()";>&times;</button>
+            <h4 style="color:green;" class="text-center"><span class="glyphicon glyphicon-shopping-cart"></span> Login</h4>
+          </div>
+          <div class="modal-body">
+            <form role="form" action="html/dashboard.html" onsubmit="return check()">
+              <input type="text" id="useridNo" class="form-control" placeholder="Enter id no" required="on" >
+              <input type="password" class="form-control"  placeholder="Enter password" required="on" id='userpswd'>
+              <input type="checkbox" value="" checked>Remember me <span class="pull-right"><a href="#">ForgotPassword?</a></span>
+              <button type="submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default btn-default pull-left" onclick="shut()">Cancel</button>
+            <p>Not a member? <a href="#"><span onclick="shut();signup()">Sign Up</span> </a></p>
+          </div>
+        </div>
+      </div>
+    </div> 
+  <!--end of client login modal-->
+  <!--client  Modal  register-->
+    <div id="signup" role="dialog" class="modal">
+      <div class="formcontainer">
+      <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close"  onclick="shut()";>&times;</button>
+            <h4 style="color:green;" class="text-center"><span class="glyphicon glyphicon-user"></span> signup</h4>
+          </div>
+          <div class="modal-body">
+            <form role="form" onsubmit="store(); shut();login()">
+              <input type="text" class="form-control"  placeholder="first name" id="firstname" required="">
+              <input type="text" class="form-control"  placeholder="last name" id="lastname" required="">
+              <input type="text" class="form-control"  placeholder="email" id="email" required="">
+              <input type="text" class="form-control"  placeholder="phone number" id='phoneno' required="">
+              <input type="text" class="form-control"  placeholder="Client id No" id='idNo' required="">
+              <input type="radio"  name="gender" value="male" >  male
+              <input type="radio"  name="gender" value="female" >  female
+              <input type="date" class="pull-right">
+              <input type="password" class="form-control" id="pswd" placeholder="Enter password" required>
+              <input type="password" class="form-control" id="pswd2" placeholder="confirm password" required>
+              <button type="submit" class="btn btn-default btn-success btn-block"  >create account</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default btn-default pull-left" onclick="shut()">Cancel</button>
+            <p>Have an account? <a href="#"><span onclick="shut();login()">Log In</a></span></p>
+          </div>
+        </div>
+      </div>
+    </div> 
+<!--end client register modals-->
+<!-- begin of admin  login modal -->
+    <div id="adminLogin" role="dialog" class="modal">
+      <div class="formcontainer">
+      <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close"  onclick="shut()";>&times;</button>
+            <h4 style="color:green;" class="text-center"><span class="glyphicon glyphicon-shopping-cart"></span> Login</h4>
+          </div>
+          <div class="modal-body">
+            <form role="form" action="html/admindashboard.html" onsubmit="return check()">
+              <input type="text" class="form-control" id="useridNo" placeholder="JOB ID NO" required="on">
+              <input type="password" class="form-control" id="userpswd" placeholder="Enter password" required="on">
+              <input type="checkbox" value="" checked>Remember me <span class="pull-right"><a href="#">ForgotPassword?</a></span>
+              <button type="submit" class="btn btn-default btn-success btn-block" ;><span class="glyphicon glyphicon-off"></span> Login</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default btn-default pull-left" onclick="shut()">Cancel</button>
+            <p>Not a member? <a href="#"><span onclick="shut();adminSignup()">Sign Up</span> </a></p>
+          </div>
+        </div>
+      </div>
+    </div> 
+  <!--end of admin login modal-->
+  <!--begin of admin  register register module-->
+  <div id="adminSignup" role="dialog" class="modal">
+    <div class="formcontainer">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close"  onclick="shut()";>&times;</button>
+          <h4 style="color:green;" class="text-center"><span class="glyphicon glyphicon-user"></span> signup</h4>
+        </div>
+        <div class="modal-body">
+          <form role="form" onsubmit ="store(); shut(); adminLogin()">
+              <input type="text" class="form-control"  placeholder="first name" id="firstname" required="">
+              <input type="text" class="form-control"  placeholder="last name" id="lastname" required="">
+              <input type="text" class="form-control"  placeholder="email" id="email" required="">
+              <input type="text" class="form-control"  placeholder="phone number" id="phoneno" required="">
+              <input type="text" class="form-control"  placeholder="job id no" id="idNo" required="">
+              <input type="radio"  name="gender" value="male" >  male
+              <input type="radio"  name="gender" value="female" >  female
+              <input type="date" class="pull-right">
+              <input type="password" class="form-control" id="pswd" placeholder="Enter password" required="">
+              <input type="password" class="form-control" id="pswd2" placeholder="confirm password" required="">
+              
+            <button type="submit" class="btn btn-default btn-success btn-block"> create account</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default btn-default pull-left" onclick="shut()">Cancel</button>
+          <p>Have an account? <a href="#"><span onclick="shut();adminLogin()">Log In</a></span></p>
+          
+        </div>
+      </div>
+    </div>
+  </div> 
+<!--end of admin register modals-->
+<!--banner class begin-->
+  <div class='banner'>
+   <h1 class=" text-center">FEATURE BOOK BANNER</h1>
+  </div>
+<!--end of banner class--> 
+  <div class="container">
+    <!--side menu bar-->
+    
+    <div class="col-md-3">
+      <h2 class="aside-headings">Categories</h2>
+      <ul class="aside-quick-links">
+        {%for item in link%}
+        <li class="aside-link" ><a href="">{{item}}</a></li>
+        {%endfor%}
+      </ul>
+      <h2 class="aside-headings">Best Seller</h2>
+      <ul class="aside-quick-links">
+      	{%for item in link%}
+        <li class="aside-link" ><a href="">{{item}}</a></li>
+        {%endfor%}
+      </ul>
+      <h2 class="aside-headings">Top Rated</h2>
+      <ul class="aside-quick-links">
+        {%for item in link%}
+        <li class="aside-link" ><a href="">{{item}}</a></li>
+        {%endfor%}
+      </ul>
+
+      <h2 class="aside-headings">New </h2>
+      <ul class="aside-quick-links">
+        {%for item in link%}
+        <li class="aside-link" ><a href="">{{item}}</a></li>
+        {%endfor%}
+      </ul>	
+    </div>
+    <div class="col-md-9">
+      <!--start of book poster row-->
+      <div class="row">
+      	{%for p in posters['poster']%}
+        <div class='col-md-3'>
+          <img class="img-responsive" src="static/images/{{p[0]}}">
+          <div class="overlay">
+            <ul class="bookdetails text-center">
+              <li class="bookdetailsinfo">{{p[0][1]}}</li>
+              <li class="bookdetailsinfo">{{p[0][1]}}</li>
+              <li class="bookdetailsinfo">{{p[0][1]}}</li>
+            </ul>
+            <span></span>
+            <span class="btn btn-default pull-right cart glyphicon glyphicon-shopping-cart"> Borrow</span>
+            <span class="btn btn-default pull-left cart glyphicon glyphicon-glyphicon glyphicon-thumbs-up"></span>
+            <span class="btn btn-default pull-left cart glyphicon glyphicon-thumbs-down"></span>
+          </div>
+        </div>
+        {%endfor%}
+    </div>
+    <div class="row">
+      	{%for p in posters['poster2']%}
+        <div class='col-md-3'>
+          <img class="img-responsive" src="static/images/{{p[0]}}">
+          <div class="overlay">
+            <ul class="bookdetails text-center">
+              <li class="bookdetailsinfo">{{p[0][1]}}</li>
+              <li class="bookdetailsinfo">{{p[0][1]}}</li>
+              <li class="bookdetailsinfo">{{p[0][1]}}</li>
+            </ul>
+            <span></span>
+            <span class="btn btn-default pull-right cart glyphicon glyphicon-shopping-cart"> Borrow</span>
+            <span class="btn btn-default pull-left cart glyphicon glyphicon-glyphicon glyphicon-thumbs-up"></span>
+            <span class="btn btn-default pull-left cart glyphicon glyphicon-thumbs-down"></span>
+          </div>
+        </div>
+        {%endfor%}
+    </div>
+    <div class="row">
+      	{%for p in posters['poster3']%}
+        <div class='col-md-3'>
+          <img class="img-responsive" src="static/images/{{p[0]}}">
+          <div class="overlay">
+            <ul class="bookdetails text-center">
+              <li class="bookdetailsinfo">{{p[0][1]}}</li>
+              <li class="bookdetailsinfo">{{p[0][1]}}</li>
+              <li class="bookdetailsinfo">{{p[0][1]}}</li>
+            </ul>
+            <span></span>
+            <span class="btn btn-default pull-right cart glyphicon glyphicon-shopping-cart"> Borrow</span>
+            <span class="btn btn-default pull-left cart glyphicon glyphicon-glyphicon glyphicon-thumbs-up"></span>
+            <span class="btn btn-default pull-left cart glyphicon glyphicon-thumbs-down"></span>
+          </div>
+        </div>
+        {%endfor%}
+    </div>
+     <div class="row">
+      	{%for p in posters['poster4']%}
+        <div class='col-md-3'>
+          <img class="img-responsive" src="static/images/{{p[0]}}">
+          <div class="overlay">
+            <ul class="bookdetails text-center">
+              <li class="bookdetailsinfo">{{p[0][1]}}</li>
+              <li class="bookdetailsinfo">{{p[0][1]}}</li>
+              <li class="bookdetailsinfo">{{p[0][1]}}</li>
+            </ul>
+            <span></span>
+            <span class="btn btn-default pull-right cart glyphicon glyphicon-shopping-cart"> Borrow</span>
+            <span class="btn btn-default pull-left cart glyphicon glyphicon-glyphicon glyphicon-thumbs-up"></span>
+            <span class="btn btn-default pull-left cart glyphicon glyphicon-thumbs-down"></span>
+          </div>
+        </div>
+        {%endfor%}
+    </div>
+       
+  </div>
+  </div>
+  <!--begin of footer-->
+  <footer>
+	  <div class="container text-center">
+    <hr />
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="col-md-3">
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">Best Seller</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="#">Top Rated</a></li>
+            <li><a href="#">New</a></li>          
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="#">Authors</a></li>
+            <li><a href="#">donate</a></li>
+          </ul>
+        </div>  
+      </div>
+    </div>
+    <hr>
+      <div class="row">
+        <div class="col-lg-12">
+          <ul class="nav nav-pills nav-justified">
+            <li><a href="/">© 2018 B.I.G Resource Center.</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+ </footer>
+
+{% endblock %}
